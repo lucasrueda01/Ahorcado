@@ -1,5 +1,4 @@
 from curses.ascii import isalpha
-import random
 import os
 from palabras_random import get_palabra
 
