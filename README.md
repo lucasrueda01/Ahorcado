@@ -1,2 +1,2 @@
 # Proyectos-en-Python
-Mis primeros proyectos begginers
+Mis primeros proyectos de begginer
