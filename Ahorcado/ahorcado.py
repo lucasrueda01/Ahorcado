@@ -1,8 +1,7 @@
-#from curses.ascii import isalpha
+from curses.ascii import isalpha
 import random
 import os
-
-palabras = ['programacion','calamar','teclado','homosexual','travesti','control','salamandra','juego','cafe']
+from palabras_random import get_palabra
 
 def jugar(palabra):
     incognita = len(palabra) * '_'
@@ -24,9 +23,9 @@ def jugar(palabra):
             print(f'Letras erradas: {letras_erradas}')
         miLetra = input('Ingrese una letra: ')
 
-        #while not isalpha(miLetra) or len(miLetra) != 1 or miLetra == '':
-            #print('Error: Debe ingresar una sola letra')
-            #miLetra = input('Ingrese una letra: ')
+        while (miLetra == '') or (len(miLetra) != 1) or (not isalpha(miLetra)):
+            print('Error: Debe ingresar una sola letra')
+            miLetra = input('Ingrese una letra: ')
 
         while (incognita.find(miLetra) != -1) or (miLetra in letras_erradas):
             print('La letra ingresada ya ha sido descubierta')
@@ -55,7 +54,7 @@ def jugar(palabra):
                 letras_erradas.append(miLetra)
                 input('Presiona Enter para continuar')
             else:
-                print(f'Te quedaste sin intentos! La palabra era {palabra}')
+                print(f'Te quedaste sin intentos! La palabra era: {palabra}')
                 break
 
 
@@ -71,7 +70,7 @@ while Menu:
     if opcion == 1:
         opcion2 = 'y'
         while opcion2 == 'y':
-            palabra = random.choice(palabras).lower()
+            palabra = get_palabra()
             jugar(palabra)  
             print('')
             opcion2 = input('Queres jugar otra vez? (y/n): ')
