@@ -9,5 +9,3 @@ def get_palabra():
     palabra = resultado['body']['Word']
     palabra = unidecode(palabra)
     return palabra
-
-print(get_palabra())
