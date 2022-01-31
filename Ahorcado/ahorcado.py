@@ -1,14 +1,13 @@
-from curses.ascii import isalpha
 import os
 from palabras_random import get_palabra
 
 def jugar(palabra):
     incognita = len(palabra) * '_'
-    Juego = True
+    juego = True
     intentos = 10
     letras_erradas = []
 
-    while Juego:
+    while juego:
         if incognita.find('_') == -1:
             print('')
             print(f'Felicidades! Encontraste la palabra: {incognita.capitalize()}')
@@ -22,12 +21,16 @@ def jugar(palabra):
             print(f'Letras erradas: {letras_erradas}')
         miLetra = input('Ingrese una letra: ')
 
-        while (miLetra == '') or (len(miLetra) != 1) or (not isalpha(miLetra)):
+        while (miLetra == '') or (len(miLetra) != 1) or (not miLetra.isalpha()):
             print('Error: Debe ingresar una sola letra')
             miLetra = input('Ingrese una letra: ')
 
-        while (incognita.find(miLetra) != -1) or (miLetra in letras_erradas):
+        while (incognita.find(miLetra) != -1):
             print('La letra ingresada ya ha sido descubierta')
+            miLetra = input('Ingrese una letra: ')
+
+        while (miLetra in letras_erradas):
+            print('La letra ya ha sido usada')
             miLetra = input('Ingrese una letra: ')
 
         if palabra.find(miLetra) != -1:
@@ -65,8 +68,8 @@ while Menu:
     1. Jugar
     2. Salir
     ''')
-    opcion = int(input('Ingrese una opcion: '))
-    if opcion == 1:
+    opcion = input('Ingrese una opcion: ')
+    if opcion == '1':
         opcion2 = 'y'
         while opcion2 == 'y':
             palabra = get_palabra()
@@ -80,7 +83,7 @@ while Menu:
             if opcion2 == 'n':
                 print('Saliendo...')
                 Menu = False
-    elif opcion == 2:
+    elif opcion == '2':
         print('Saliendo...')
         Menu = False
     else:
