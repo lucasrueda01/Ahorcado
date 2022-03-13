@@ -1,2 +1,2 @@
 # Proyectos-en-Python
-Mis primeros proyectos de begginer
+Mis primeros proyectos de XDDD
